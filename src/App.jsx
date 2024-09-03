@@ -1,10 +1,5 @@
-
 const App = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div>3D Developer Portfolio</div>;
+};
 
-export default App
+export default App;
