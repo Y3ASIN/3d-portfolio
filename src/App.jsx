@@ -11,6 +11,7 @@ import {
   Works,
   StarsCanvas,
 } from "./components";
+import { styles } from "./styles";
 
 const App = () => {
   return (
