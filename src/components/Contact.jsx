@@ -1,10 +1,15 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+
+// template_i69uacn
+// service_pp9399n
+// a_eVEu4DxP52xrQ41
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,8 +20,45 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {};
-  const handleSubmit = (e) => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .send(
+        "service_pp9399n",
+        "template_i69uacn",
+        {
+          from_name: form.name,
+          to_name: "Yeasin",
+          from_email: form.email,
+          to_email: "yeasinarafat.wa@gmail.com",
+          message: form.message,
+        },
+        "a_eVEu4DxP52xrQ41"
+      )
+      .then(() => {
+        setLoading(false);
+        alert("Thank you. I will get back to you as soon as possible.");
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+      })
+      .error(() => {
+        setLoading(false);
+
+        console.log(error);
+        alert("Something went wrong. Please try again.");
+      });
+  };
 
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
@@ -77,11 +119,14 @@ const Contact = () => {
         </form>
       </motion.div>
 
-      <motion.div variants={slideIn('right','tween',0.2, 1)} className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]">
+      <motion.div
+        variants={slideIn("right", "tween", 0.2, 1)}
+        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+      >
         <EarthCanvas />
       </motion.div>
     </div>
-  ); 
+  );
 };
 
 export default SectionWrapper(Contact, "contact");
