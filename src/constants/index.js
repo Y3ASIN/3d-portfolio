@@ -27,6 +27,7 @@ import {
   appleweb,
   pizzaCo,
   dslab,
+  nike,
 } from "../assets";
 
 export const navLinks = [
@@ -268,7 +269,24 @@ const projects = [
     ],
     image: pizzaCo,
     source_code_link: "https://github.com/Y3ASIN/fast-react-pizza",
-  }
+  },
+  {
+    name: "Nike",
+    description:
+      "In this project, I developed nike landing page. Utilizing the full potential of Tailwind CSS, I have designed a high-quality, responsive Nike landing page. The design effectively integrates Tailwind’s utility-first approach to create a clean, modern, and user-friendly interface.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: nike,
+    source_code_link: "https://github.com/Y3ASIN/nike",
+  },
 ];
 
 export { services, technologies, experiences, testimonials, projects };
