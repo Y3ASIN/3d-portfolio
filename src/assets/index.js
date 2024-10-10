@@ -26,9 +26,16 @@ import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
+import dslab from './company/dslab.png'
+
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+
+import wildOasis from './wild-oasis.png'
+import promptopia from './promtopia.png';
+import appleweb from './appleweb.png'
+import pizzaCo from './pizza.png'
 
 export {
   logo,
@@ -56,7 +63,12 @@ export {
   shopify,
   starbucks,
   tesla,
+  dslab,
   carrent,
   jobit,
   tripguide,
+  wildOasis,
+  promptopia,
+  appleweb,
+  pizzaCo
 };
