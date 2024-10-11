@@ -32,7 +32,7 @@ const ComputerCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width:768px)");
+    const mediaQuery = window.matchMedia("(max-width:500px)");
     setIsMobile(mediaQuery.matches);
 
     const handleMediaQueryChange = (e) => {
@@ -48,18 +48,19 @@ const ComputerCanvas = () => {
 
   return (
     <Canvas
-      pixelRatio={
-        isMobile
-          ? Math.min(window.devicePixelRatio, 1)
-          : window.devicePixelRatio
-      }
+      // pixelRatio={
+      //   isMobile
+      //     ? Math.min(window.devicePixelRatio, 1)
+      //     : window.devicePixelRatio
+      // }
       frameloop="demand"
       shadows={!isMobile}
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{
-        antialias: true,
-        alpha: false,
-        powerPreference: "high-performance",
+        // antialias: true,
+        // alpha: false,
+        // powerPreference: "high-performance",
+        preserveDrawingBuffer: true,
       }}
     >
       <Suspense fallback={<CanvasLoader />}>
@@ -70,7 +71,7 @@ const ComputerCanvas = () => {
         />
         <Computers isMobile={isMobile} />
       </Suspense>
-      <Preload all={isMobile ? false : true} />
+      <Preload all />
     </Canvas>
   );
 };
