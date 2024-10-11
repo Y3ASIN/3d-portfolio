@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
+import * as Sentry from "@sentry/react";
 
 import {
   About,
@@ -34,4 +35,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Sentry.withProfiler(App);
