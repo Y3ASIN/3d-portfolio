@@ -32,8 +32,7 @@ const ComputerCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width:500px)");
-
+    const mediaQuery = window.matchMedia("(max-width:768px)");
     setIsMobile(mediaQuery.matches);
 
     const handleMediaQueryChange = (e) => {
@@ -51,13 +50,17 @@ const ComputerCanvas = () => {
     <Canvas
       pixelRatio={
         isMobile
-          ? Math.min(window.devicePixelRatio, 1.5)
+          ? Math.min(window.devicePixelRatio, 1)
           : window.devicePixelRatio
       }
       frameloop="demand"
-      shadows={isMobile ? false : true}
+      shadows={!isMobile}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance",
+      }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
